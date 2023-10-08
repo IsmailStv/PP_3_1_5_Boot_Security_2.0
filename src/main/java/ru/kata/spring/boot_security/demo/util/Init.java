@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import ru.kata.spring.boot_security.demo.repository.RoleRepository;
-import ru.kata.spring.boot_security.demo.repository.UserRepository;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
+import ru.kata.spring.boot_security.demo.repository.RoleRepository;
+import ru.kata.spring.boot_security.demo.repository.UserRepository;
 
 import javax.annotation.PostConstruct;
 
@@ -34,20 +34,20 @@ public class Init {
         roleRepository.save(roleUser);
 
         User user = new User();
-        user.setAge(22);
-        user.setEmail("admin@mail.com");
-        user.setFirstName("renya");
-        user.setLastName("krokodilov");
-        user.setPassword(passwordEncoder.encode("adminasdfggfg"));
+        user.setAge(44);
+        user.setEmail("java@gmail.com");
+        user.setFirstName("Kate");
+        user.setLastName("Java");
+        user.setPassword(passwordEncoder.encode("adminKateJava"));
         user.getRoles().add(roleRepository.findRoleByRole("ROLE_ADMIN"));
         userRepository.save(user);
 
         user = new User();
-        user.setAge(33);
-        user.setEmail("user@mail.com");
-        user.setFirstName("ez");
-        user.setLastName("strelkov");
-        user.setPassword(passwordEncoder.encode("userasdfasdf"));
+        user.setAge(34);
+        user.setEmail("lombok@mail.ru");
+        user.setFirstName("Piter");
+        user.setLastName("Lombok");
+        user.setPassword(passwordEncoder.encode("userPiterLombok"));
         user.getRoles().add(roleRepository.findRoleByRole("ROLE_USER"));
         userRepository.save(user);
     }

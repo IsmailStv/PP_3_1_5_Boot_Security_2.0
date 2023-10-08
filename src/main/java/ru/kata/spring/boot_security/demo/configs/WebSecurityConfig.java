@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @EnableWebSecurity
-public class    WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
 
@@ -30,19 +30,15 @@ public class    WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login", "/error").permitAll()
                 .antMatchers("/admin/**", "/adminApi/**").hasRole("ADMIN")
-                .antMatchers( "/userApi/**", "/user/**", "/userApi/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/userApi/**", "/user/**", "/userApi/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
-
                 .and()
-
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/process_login")
                 .successHandler(successUserHandler)
                 .failureUrl("/login?error")
-
                 .and()
-
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login");
